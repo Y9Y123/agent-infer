@@ -164,12 +164,12 @@ def test_aggregate_vllm_metrics_requires_two_supported_snapshots() -> None:
 def test_aggregate_vllm_metrics_surfaces_capture_reason_on_missing_snapshot() -> None:
     """A failed metrics fetch reports the collector error instead of a placeholder (issue #23)."""
     metrics = aggregate_vllm_metrics(
-        None, None, capture_reason="Connection refused: connect to http://10.0.0.1:8077/metrics failed"
+        None, None, capture_reason="Connection refused: connect to http://vllm-backend:8077/metrics failed"
     )
 
     assert metrics.available is False
     assert metrics.reason == (
-        "metrics_capture_failed: Connection refused: connect to http://10.0.0.1:8077/metrics failed"
+        "metrics_capture_failed: Connection refused: connect to http://vllm-backend:8077/metrics failed"
     )
 
 

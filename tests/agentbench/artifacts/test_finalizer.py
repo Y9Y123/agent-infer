@@ -325,7 +325,7 @@ def test_vllm_capture_failure_reason_lands_in_summary(tmp_path: Path) -> None:
             "vllm_start",
             None,
             False,
-            "Connection refused: connect to http://10.0.0.1:8077/metrics failed",
+            "Connection refused: connect to http://vllm-backend:8077/metrics failed",
             {},
         ),
         EvidenceCapture("vllm_end", None, False, "Connection refused", {}),
